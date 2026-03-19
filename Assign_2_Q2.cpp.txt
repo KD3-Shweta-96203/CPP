@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+class TollBooth
+{
+private:
+    unsigned int totalCars;
+    unsigned int payingCars;
+    unsigned int nonPayingCars;
+    double totalCash;
+
+public:
+    TollBooth()
+    {
+        totalCars = 0;
+        payingCars = 0;
+        nonPayingCars = 0;
+        totalCash = 0.0;
+    }
+    void payingCar()
+    {
+        totalCars++;
+        payingCars++;
+        totalCash += 0.50;
+    }
+    void nopayCar()
+    {
+        totalCars++;
+        nonPayingCars++;
+    }
+    void printOnConsole()
+    {
+        cout<<"\n-- Toll Booth Report --"<<endl;
+        cout<<"Total Cars        : "<<totalCars<<endl;
+        cout<<"Paying Cars       : "<<payingCars<<endl;
+        cout<<"Non Paying Cars   : "<<nonPayingCars<<endl;
+        cout<<"Total Cash Collected : $"<<totalCash<<endl;
+    }
+};
+
+int main()
+{
+    TollBooth t;
+    int choice;
+    do
+    {
+        cout<<"\n1. Paying Cars"<<endl;
+        cout<<"2. Non-Paying Cars"<<endl;
+        cout<<"3. Show Report"<<endl;
+        cout<<"0. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+
+        switch(choice)
+        {
+            case 1:
+                t.payingCar();
+                break;
+            case 2:
+                t.nopayCar();
+                break;
+            case 3:
+                t.printOnConsole();
+                break;
+            case 0:
+                cout<<"Program Ended"<<endl;
+                break;
+            default:
+                cout<<"Invalid Choice"<<endl;
+        }
+    } while(choice != 0);
+    return 0;
+}

@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+class Cylinder{
+    
+    private:
+        double radius ;
+        double height ;
+        static const double pi ;
+
+    public:
+
+        Cylinder():radius(0),height(0)
+        {
+            cout<<this->radius<<" "<<this->height<<endl;
+        }
+
+        void setRadius(int radius){
+            cout<<"Enter radius: ";
+            cin>>this->radius;
+            cout<<endl;
+        }
+
+        void getRadius(){
+            cout<<"Radius: ";
+            cout<<this->radius<<endl;
+        }
+
+        void setHeight(int height){
+            cout<<"Enter height: ";
+            cin>>this->height;
+            cout<<endl;
+        }
+
+        void getHeight(){
+            cout<<"Height: ";
+            cout<<this->height<<endl;
+        }
+
+        double calculateVolume()
+        {   
+            return pi*this->radius*this->radius*this->height;
+        }
+};
+const double Cylinder::pi = 3.14;
+int main()
+{   Cylinder c1;
+    c1.setRadius(1.00);
+    c1.setHeight(1.00);
+    c1.getHeight();
+    c1.getHeight();
+    cout<<c1.calculateVolume()<<endl;
+    return 0;
+}

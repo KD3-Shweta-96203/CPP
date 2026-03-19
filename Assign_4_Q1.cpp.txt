@@ -1,0 +1,146 @@
+#include<iostream>
+using namespace std;
+
+class Time
+{
+private:
+    int hour;
+    int minute;
+    int second;
+
+public:
+    Time()
+    {
+        hour = 0;
+        minute = 0;
+        second = 0;
+    }
+    Time(int h,int m,int s)
+    {
+        hour = h;
+        minute = m;
+        second = s;
+    }
+    void setHour()
+    {
+        cout<<"Enter Hour: ";
+        cin>>hour;
+    }
+    void setMinute()
+    {
+        cout<<"Enter Minute: ";
+        cin>>minute;
+    }
+    void setSeconds()
+    {
+        cout<<"Enter Seconds: ";
+        cin>>second;
+    }
+    int getHour()
+    {
+        return hour;
+    }
+    int getMinute()
+    {
+        return minute;
+    }
+    int getSeconds()
+    {
+        return second;
+    }
+    void printTime()
+    {
+        cout<<hour<<":"<<minute<<":"<<second<<endl;
+    }
+    void addTime(Time t2)
+    {
+        second += t2.second;
+
+        if(second >= 60)
+        {
+            minute += second / 60;
+            second = second % 60;
+        }
+
+        minute += t2.minute;
+
+        if(minute >= 60)
+        {
+            hour += minute / 60;
+            minute = minute % 60;
+        }
+
+        hour += t2.hour;
+
+        if(hour >= 24)
+        {
+            hour = hour % 24;
+        }
+    }
+};
+
+int main()
+{
+    int n;
+
+    cout<<"Enter number of Time objects: ";
+    cin>>n;
+
+    Time *arr = new Time[n];
+
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\nEnter Time "<<i+1<<endl;
+        arr[i].setHour();
+        arr[i].setMinute();
+        arr[i].setSeconds();
+    }
+
+    int choice;
+
+    do
+    {
+        cout<<"\n----- MENU -----"<<endl;
+        cout<<"1. Add Time"<<endl;
+        cout<<"2. Display All Time"<<endl;
+        cout<<"3. Display only Hours"<<endl;
+        cout<<"0. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+
+        if(choice == 1)
+        {
+            int t1,t2;
+            cout<<"Enter index of first time: ";
+            cin>>t1;
+
+            cout<<"Enter index of second time: ";
+            cin>>t2;
+
+            arr[t1].addTime(arr[t2]);
+
+            cout<<"After Addition:"<<endl;
+            arr[t1].printTime();
+        }
+
+        else if(choice == 2)
+        {
+            cout<<"\nAll Time Objects"<<endl;
+            for(int i=0;i<n;i++)
+                arr[i].printTime();
+        }
+
+        else if(choice == 3)
+        {
+            cout<<"\nOnly Hours"<<endl;
+            for(int i=0;i<n;i++)
+                cout<<arr[i].getHour()<<endl;
+        }
+
+    }
+    while(choice!=0);
+
+    delete[] arr;
+
+    return 0;
+}

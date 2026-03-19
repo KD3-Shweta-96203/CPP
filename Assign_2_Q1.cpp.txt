@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+
+class Box
+{
+private:
+    int length;
+    int breadth;
+    int height;
+
+public:
+    Box()
+    {
+        this->length = 1;
+        this->breadth = 1;
+        this->height = 1;
+    }
+    Box(int value)
+    {
+        this->length = value;
+        this->breadth = value;
+        this->height = value;
+    }
+    Box(int l, int b, int h)
+    {
+        this->length = l;
+        this->breadth = b;
+        this->height = h;
+    }
+    int calculateVolume()
+    {
+        return this->length * this->breadth * this->height;
+    }
+};
+int main()
+{
+    int choice;
+    do
+    {
+        cout << "\nMenu";
+        cout << "\n1. Calculate Volume with default values";
+        cout << "\n2. Calculate Volume with same length, breadth and height";
+        cout << "\n3. Calculate Volume with different values";
+        cout << "\n0. Exit";
+        cout << "\nEnter choice : ";
+        cin >> choice;
+
+        switch(choice)
+        {
+            case 1:
+            {
+                Box b1;
+                cout << "Volume = " << b1.calculateVolume() << endl;
+                break;
+            }
+            case 2:
+            {
+                int value;
+                cout << "Enter value : ";
+                cin >> value;
+                Box b2(value);
+                cout << "Volume = " << b2.calculateVolume() << endl;
+                break;
+            }
+            case 3:
+            {
+                int l,b,h;
+                cout << "Enter Length Breadth Height : ";
+                cin >> l >> b >> h;
+                Box b3(l,b,h);
+                cout << "Volume = " << b3.calculateVolume() << endl;
+                break;
+            }
+        }
+    } while(choice != 0);
+    return 0;
+}

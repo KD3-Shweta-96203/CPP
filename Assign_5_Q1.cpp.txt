@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+class Date
+{
+private:
+    int day;
+    int month;
+    int year;
+public:
+    Date()
+    {
+        day = 1;
+        month = 1;
+        year = 2000;
+    }
+    Date(int d,int m,int y)
+    {
+        day = d;
+        month = m;
+        year = y;
+    }
+    void acceptDate()
+    {
+        cout<<"Enter Day Month Year: ";
+        cin>>day>>month>>year;
+    }
+    void printDate()
+    {
+        cout<<day<<"/"<<month<<"/"<<year<<endl;
+    }
+};
+class Person
+{
+private:
+    string name;
+    string address;
+    Date birthdate;
+public:
+    void acceptPerson()
+    {
+        cout<<"Enter Name: ";
+        cin>>name;
+
+        cout<<"Enter Address: ";
+        cin>>address;
+
+        cout<<"Enter Birthdate"<<endl;
+        birthdate.acceptDate();
+    }
+    void printPerson()
+    {
+        cout<<"Name: "<<name<<endl;
+        cout<<"Address: "<<address<<endl;
+        cout<<"Birthdate: ";
+        birthdate.printDate();
+    }
+};
+class Student
+{
+private:
+    int id;
+    int marks;
+    string course;
+    Date joiningDate;
+    Date endDate;
+public:
+    void acceptStudent()
+    {
+        cout<<"Enter ID: ";
+        cin>>id;
+
+        cout<<"Enter Marks: ";
+        cin>>marks;
+
+        cout<<"Enter Course: ";
+        cin>>course;
+
+        cout<<"Enter Joining Date"<<endl;
+        joiningDate.acceptDate();
+
+        cout<<"Enter End Date"<<endl;
+        endDate.acceptDate();
+    }
+    void printStudent()
+    {
+        cout<<"ID: "<<id<<endl;
+        cout<<"Marks: "<<marks<<endl;
+        cout<<"Course: "<<course<<endl;
+
+        cout<<"Joining Date: ";
+        joiningDate.printDate();
+
+        cout<<"End Date: ";
+        endDate.printDate();
+    }
+};
+int main()
+{
+    Person p;
+    Student s;
+
+    cout<<"Enter Person Details"<<endl;
+    p.acceptPerson();
+
+    cout<<"\nEnter Student Details"<<endl;
+    s.acceptStudent();
+
+    cout<<"\nPerson Information"<<endl;
+    p.printPerson();
+
+    cout<<"\nStudent Information"<<endl;
+    s.printStudent();
+
+    return 0;
+}
